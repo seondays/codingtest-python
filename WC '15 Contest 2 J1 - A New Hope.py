@@ -2,8 +2,7 @@
 
 input_far_count = int(input())
 prefix = "A long time ago in a galaxy "
-suffix = "away..."
-far = "far "
+suffix = "far away..."
 far_puls_comma = "far, "
 
-print(prefix + far_puls_comma * (input_far_count-1) + far + suffix)
+print(prefix + far_puls_comma * (input_far_count-1) + suffix)
