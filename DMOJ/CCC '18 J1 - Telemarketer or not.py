@@ -1,3 +1,5 @@
+#https://dmoj.ca/problem/ccc18j1
+
 first = int(input())
 second = int(input())
 third = int(input())
