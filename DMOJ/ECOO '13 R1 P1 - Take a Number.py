@@ -3,23 +3,23 @@
 count = int(input())
 
 take = 0
-serve = 0 
+serve = 0
 
 while True:
-    s = input()
-    if s == "EOF":
+    status = input()
+    if status == "EOF":
         break
 
-    if s == "CLOSE":
-        print(take,take-serve,count)
+    if status == "CLOSE":
+        print(take,(take-serve),count)
         take = 0
         serve = 0
 
-    elif s == "TAKE":
+    if status == "TAKE":
         take += 1
         count += 1
         if count == 1000:
             count = 1
-
-    elif s == "SERVE":
+    
+    if status == "SERVE":
         serve += 1
