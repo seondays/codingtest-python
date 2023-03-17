@@ -22,7 +22,7 @@ teamB_score = 0
 winner = ""
 turnaround_count = 0
 
-for i in range(2280):
+for i in range(2880):
     if i in teamA_times:
         teamA_score += 1
     
