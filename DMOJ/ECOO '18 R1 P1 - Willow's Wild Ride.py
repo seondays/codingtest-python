@@ -6,12 +6,8 @@ for j in range(10) :
     playing_days = int(input_data[0])
     next_days = int(input_data[1])
 
-    habits = []
+    habits = [input() for i in range(next_days)]
     willow_playing = 0
-
-    for i in range(next_days):
-        today = input()
-        habits.append(today)
 
     for i in habits:
         if i == "B":
