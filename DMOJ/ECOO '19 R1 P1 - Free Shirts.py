@@ -21,9 +21,13 @@ for j in range(10):
             shirts = entire_shirts
 
         shirts -= 1
-
-        if i in event_days_list:
+        
+        # 하루에도 1건 이상 이벤트가 발생할 수 있기 때문에 이를 고려해야 한다
+        if event_days_list.count(i) == 1:
             shirts += 1
             entire_shirts += 1
+        if event_days_list.count(i) > 1 :
+            shirts += event_days_list.count(i)
+            entire_shirts += event_days_list.count(i)
 
-    print("정답",count)
+    print(count)
