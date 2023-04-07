@@ -34,24 +34,25 @@ for i in range(turn):
 for i in range(len(move)):
     
     if i % 2 == 0:
-    
-        if move[i] == 'A' and i == 0:
+        if i == 0 and move[i] == 'A':
             enemy_health -= damage[i]
-        if move[i] == 'A' and i != 0:
-            if move[i-1] == 'D':
-                player_health -= damage[i-1]
+        if i != 0 and move[i] == 'A':
             if move[i-1] == 'A':
                 enemy_health -= damage[i]
+        if move[i] == 'D':
+            if move[i+1] == 'D':
+                player_health -= damage[i]
     
     if i % 2 != 0:
         if move[i] == 'A':
-            if move[i-1] == 'D':
-                enemy_health -= damage[i-1]
             if move[i-1] == 'A':
                 player_health -= damage[i]
         if move[i] == 'D' and i == len(move)-1:
-            enemy_health -= enemy_damage[i]
-        
+            enemy_health -= damage[i]
+        if move[i] == 'D' and i != len(move)-1:
+            if move[i+1] == 'D':
+                enemy_health -= damage[i]
+       
     if player_health <= 0 :
         print("DEFEAT")
         break
@@ -60,9 +61,7 @@ for i in range(len(move)):
         break
 
 if player_health > 0 and enemy_health > 0 :
-    print("TIE")
-
-        
+    print("TIE")   
         
     
     
