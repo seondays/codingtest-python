@@ -36,8 +36,8 @@ boxes = read_box(count)
 
 if is_box_sorted(boxes):
     if is_boxes_sorted(make_list_start_end_in_box(boxes)):
-        print("Yes")
+        print("YES")
     else:
-        print("No")
+        print("NO")
 else:
-    print("No")
+    print("NO")
