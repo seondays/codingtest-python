@@ -4,11 +4,11 @@
 input_text = input().split(" ")
 row = int(input_text[0])
 column = int(input_text[1])
-matrix = []
+original_matrix = []
 
 for i in range(row):
     input_row = list(input())
-    matrix.append(input_row)
+    original_matrix.append(input_row)
 
 # TODO : 악수할 수 있는 횟수 구하기
 def handshake_counting(maxtrix,row,column):
@@ -50,8 +50,25 @@ def make_space(matrix,row,column):
 # TODO : 앉을 자리가 있는지 여부 구하기
 def check_handshake_available(maxtrix):
     for i in maxtrix:
-        if '.' in maxtrix:
+        if '.' in i:
             return True
-        return False
+    return False
     
 # TODO : main
+
+handshake_count_list = []
+
+if check_handshake_available(original_matrix):
+    for i in range(row):
+        for j in range(column):
+            
+            copy_matrix = [row[:] for row in original_matrix]
+            
+            if copy_matrix[i][j] == '.':
+                copy_matrix[i][j] = 'o'
+                matrix = make_space(copy_matrix,row,column)
+                handshake_count_list.append(handshake_counting(matrix,row,column))
+    print(max(handshake_count_list))
+    
+else:
+    print(handshake_counting(make_space(original_matrix,row,column),row,column))
