@@ -30,6 +30,21 @@ output_file = open('mixmilk.out','w')
 
 milk_buckets = read_bucket(input_file)
 
+for i in range(100):
+    first_number = i % 3
+    
+    if first_number == 2:
+        secound_number = 0
+    else :
+        secound_number = first_number + 1
+    
+    after_mixed = mix_bucket(milk_buckets[first_number],milk_buckets[secound_number])
+    milk_buckets[first_number] = after_mixed[0]
+    milk_buckets[secound_number] = after_mixed[1]
+
+for i in range(3):
+    output_file.write(str(milk_buckets[i][1])+'\n')
+
 input_file.close
 output_file.close
     
