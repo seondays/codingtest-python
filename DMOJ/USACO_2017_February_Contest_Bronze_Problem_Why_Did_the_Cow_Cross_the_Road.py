@@ -12,15 +12,27 @@ def read_cows(input_file, count):
     return cows
     
 # 각 소들의 관찰 데이터 값 얻기
+def observe_cross_the_road(cows):
+    observation_cows = []
+    for i in range(len(cows)):
+        if len(cows[i]) > 1:
+            count = calculate_cross_the_road(cows[i])
+            observation_cows.append(count)
+    
+    return observation_cows
 
-# 관찰 데이터 값으로 소들이 길을 몇번 건넜는지 계산하기
+# 소들이 길을 몇번 건넜는지 계산하기
+def calculate_cross_the_road(road_date):
+    count = 0
+    for i in range(len(road_date)-1):
+        if road_date[i] + road_date[i+1] == 1:
+            count += 1
+    
+    return count       
 
 # main
-
 input_file = open('DMOJ\\crossroad.in','r')
 ouput_file = open('DMOJ\\crossroad.out','w')
 
 count = int(input_file.readline().strip())
 cows = read_cows(input_file,count)
-
-
