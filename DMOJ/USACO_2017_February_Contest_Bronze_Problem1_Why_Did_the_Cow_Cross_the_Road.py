@@ -31,8 +31,15 @@ def calculate_cross_the_road(road_date):
     return count       
 
 # main
-input_file = open('DMOJ\\crossroad.in','r')
-ouput_file = open('DMOJ\\crossroad.out','w')
+input_file = open('crossroad.in','r')
+ouput_file = open('crossroad.out','w')
 
 count = int(input_file.readline().strip())
 cows = read_cows(input_file,count)
+observation = observe_cross_the_road(cows)
+total_crossings = str(sum(observation))
+
+ouput_file.write(total_crossings)
+
+input_file.close()
+ouput_file.close()
