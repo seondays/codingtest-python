@@ -20,3 +20,18 @@ def check_answer(answer,predict):
     if answer[predict-1] :
         return True
     return False
+
+# main
+score_list = []
+for i in range(1,4):
+    score = 0
+    setting = set_round(i)
+    for j in round:
+        swap = j[0:2]
+        predict = j[-1]
+        round_result = play_round(swap,setting)
+        if check_answer(round_result,predict):
+            score += 1
+    score_list.append(score)
+
+output_file.write(str(max(score_list)))
