@@ -8,11 +8,12 @@ play_board = input_file.read().strip().split('\n')
 def check_count_row_winner(play_board):
     for i in play_board:
         if len(set(i)) == 2:
-            if list(set(i)) not in winner_team:
-                winner_team.append(list(set(i)))
+            print(set(i))
+            if set(i) not in winner_team:
+                winner_team.append(set(i))
         if len(set(i)) == 1:
-            if list(set(i)) not in winner_cow:
-                winner_cow.append(list(set(i)))
+            if set(i) not in winner_cow:
+                winner_cow.append(set(i))
 
 # 세로 비교list 만들기
 def make_col_list(play_board):
