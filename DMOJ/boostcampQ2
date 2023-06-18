@@ -1,0 +1,67 @@
+# 타입별로 #를 할당하는 기능 구현
+def get_memory(type):
+        if type == "BOOL":
+            return "#"  
+        elif type == "SHORT":
+            return "##"
+        elif type == "FLOAT":
+            return "####"
+        elif type == "INT":
+            return "########"
+        elif type == "LONG":
+            return "########,########"
+
+# 바이트가 8개를 초과하는지 여부 확인하는 기능 구현
+def is_not_byte_over(str,type):
+    length = 0
+    
+    if type == "BOOL":
+        length = str + 1
+    elif type == "SHORT":
+        length = str + 2
+    elif type == "FLOAT":
+        length = str + 4
+    elif type == "INT":
+        length = str + 8
+    elif type == "LONG":
+        length = str + 16
+    
+    return length <= 8
+
+def solution(param0):
+    result = ""
+    str = get_memory(param0[0])
+    
+    for i in range(1,len(param0)):
+        if is_not_byte_over(len(str),param0[i]):
+            if param0[i-1] == "BOOL" and param0[i] == "SHORT":
+                str += '.'
+                str += get_memory(param0[i])
+            elif param0[i-1] == "BOOL" and param0[i] == "FLOAT":
+                str += '.' * 3
+                str += get_memory(param0[i])
+            elif param0[i-1] == "SHORT" and param0[i] == "FLOAT":
+                str += '.' * 2
+                str += get_memory(param0[i])
+            else:
+                str += get_memory(param0[i])
+                
+        else:
+            str += '.' * (8-len(str)) + ','
+            result += str
+            str = get_memory(param0[i])
+
+        if i == len(param0)-1:
+                result += str + '.'* (8-len(str))
+     
+    if len(result.split(",")) > 16:
+        result = "HALT"
+        
+    return result
+
+print(solution(["INT","INT","BOOL","SHORT","LONG"]))
+print(solution(["INT","SHORT","FLOAT","INT","BOOL"]))
+print(solution(["FLOAT","SHORT","BOOL","BOOL","BOOL","INT"]))
+print(solution(["BOOL","LONG","SHORT","LONG","BOOL","LONG","BOOL","LONG","SHORT","LONG","LONG"]))
+print(solution(["BOOL","BOOL","BOOL","BOOL","BOOL","BOOL"]))
+
