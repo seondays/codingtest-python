@@ -42,4 +42,14 @@ def decrypt(ciphertext,dectrypt_dict):
 
 # main
 decrypt_dict = make_decrypt_dict(plaintext_lst,ciphertext_lst)
-print(decrypt(encrypted,decrypt_dict))
+
+result = decrypt(encrypted,decrypt_dict)
+
+# 26개만 채워진 경우 나머지 알파벳(혹은 공백) 한가지를 추론하기
+if "." in result and len(decrypt_dict) == 26 and len(set(decrypt_dict)) == 26:
+  alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+  for i in range(len(alphabet)):
+    if alphabet[i] not in plaintext:
+      result = result.replace(".", alphabet[i])
+
+print(result)
