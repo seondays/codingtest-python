@@ -21,3 +21,24 @@
 # 문장과 문장을 연결하는 접속사는 최대한 다 사용해야 함
     # 단, 이미 완성된 문장들을 연결하고자 하는 경우 일부 마침표를 제거해야 함(기존 마침표 개수-1)
     # 남은 구성요소들 중 문장의 개수가 접속사 1개당 2개가 되지 않을 경우 체크해서 pass
+
+def save_words(word,type,words_dict):
+    words_dict[type].append(word)
+
+# main
+count = int(input())
+
+for i in range(count):
+    words_dict = {"noun":[],"transitive-verb":[],"intransitive-verb":[],"conjunction":[]}
+    n = list(map(int,input().split()))
+
+    word_number = n[0]
+    period = n[1]
+    comma = n[2]
+
+    for k in range(word_number):
+        sentence = input().split()
+        word = sentence[0]
+        type = sentence[1]
+
+        save_words(word,type,words_dict)
