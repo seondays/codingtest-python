@@ -3,6 +3,10 @@
 input_n = int(input())
 input_text = input()
 
+# F로만 이루어진 문자열인 경우 처리하기
+if input_text.count('F') == len(input_text):
+   input_text = 'E' + input_text[1:]
+
 # 패턴 적용을 위해 문자열을 작은 구간들로 쪼개기
 message_index = [i for i in range(len(input_text)) if input_text[i] != 'F']
 
