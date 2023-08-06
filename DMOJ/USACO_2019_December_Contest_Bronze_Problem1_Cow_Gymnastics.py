@@ -19,5 +19,11 @@ for i in range(sessions):
                 else:
                       dict[tmp] = 1
 
+for v in dict.values():
+      if v == sessions:
+            result += 1
+
+output_file.write(str(result))
+
 input_file.close()
 output_file.close()
