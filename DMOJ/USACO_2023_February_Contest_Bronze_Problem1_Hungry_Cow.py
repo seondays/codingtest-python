@@ -11,5 +11,17 @@ for _ in range(N):
     days.append(day)
     delivery.append(count)
 
-print(days)
-print(delivery)
+days.append(T+1)
+delivery.append(0)
+
+result = 0
+for i in range(N):
+    haybales += delivery[i]
+    if days[i+1] - days[i] < haybales:
+        result += days[i+1] - days[i]
+        haybales -= days[i+1] - days[i]
+    else:
+        result += haybales
+        haybales = 0
+    
+print(result)
