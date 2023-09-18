@@ -6,13 +6,8 @@ class Solution:
         result = []
 
         for i in range(n):
-            for j in range(i + 1, n):
-                if nums[i] + nums[j] == target:
-                    result.append(i)
-                    result.append(j)
+            tmp = target - nums[i]
+            if tmp in nums[i+1:n]:
+                result.append(i)
+                result.append(nums[i+1:n].index(tmp) + i + 1)
         return result
-    
-solution = Solution()
-
-result = solution.twoSum([-18,12,3,0],-6)
-print(result)
