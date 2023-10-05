@@ -56,3 +56,11 @@ while (player_hp > 0 and enemy_hp > 0) and index < (turn * 2) + 1:
             else:
                 player_hp -= val[index]
     index += 1
+
+# 결과 출력
+if player_hp > 0 and enemy_hp < 1:
+    print("VICTORY")
+elif enemy_hp > 0 and player_hp < 1:
+    print("DEFEAT")
+elif player_hp > 0 and enemy_hp > 0:
+    print("TIE")
