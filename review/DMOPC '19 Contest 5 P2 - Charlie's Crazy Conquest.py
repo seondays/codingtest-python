@@ -35,3 +35,24 @@ for i in range(turn):
     val.append(enemy_val[i])
 act.append('dummy')
 val.append(-1)
+
+# 게임 로직 구현
+index = 1
+while (player_hp > 0 and enemy_hp > 0) and index < (turn * 2) + 1:
+    # 만약 공격이면
+    if act[index] == 'A':
+        # 이전에 회피하지 않았으면 그대로 공격이 들어간다
+        if act[index - 1] != 'D':
+            if index % 2 == 0:
+                player_hp -= val[index]
+            else :
+                enemy_hp -= val[index]
+    # 만약 회피라면
+    if act[index] == 'D':
+        # 다음에 공격이 아니라면 내가 스스로 데미지를 입는다
+        if act[index + 1] != 'A':
+            if index % 2 == 0:
+                enemy_hp -= val[index]
+            else:
+                player_hp -= val[index]
+    index += 1
